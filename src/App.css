@@ -1,15 +1,30 @@
 .App {
   text-align: center;
+  background-color: #E9E6C7;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 5vmin;
   pointer-events: none;
 }
 
+.welcomeText{
+  text-align: center;
+  /* doesn't seem to be working!! */
+}
+.inputFile{
+  text-align: center;
+  margin: auto;
+  display: table;
+}
+h3 {
+  color: #EC5B0E;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 5s linear;
   }
 }
 
