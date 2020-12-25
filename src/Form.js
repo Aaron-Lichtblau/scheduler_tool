@@ -27,7 +27,7 @@ class Question extends React.Component {
         <Radio
           type = {this.props.name}
           value= {i}
-          onClick={() => this.handleClick(i)}
+          onClick={() => this.props.handleClick(this.props.name,i)}
         />
       );
     }
@@ -42,18 +42,15 @@ class Question extends React.Component {
       </div>
     )
   }
-  handleClick(value){
-    this.setState({
-      name : value
-    });
-    console.log(this.props.name + " updated to " + value);
-  }
+
 }
 
 
 class BasicForm extends React.Component {
   constructor(props){
   super(props);
+  this.handleClick = this.handleClick.bind(this);
+
   this.state = {
     slots: props.slots,
     duration: 120,
@@ -63,30 +60,40 @@ class BasicForm extends React.Component {
     guarantee_shift : 5,
     shift_cap : 5,
     equality: 3,
-  };
-}
-  renderQuestion(name){
+    };
+  }
+  handleClick(name, value){
+    var self = this;
+    const key = this.state[name];
+    self.setState({
+      key : value
+    });
+    console.log(name + " updated to " + value);
+  }
+
+  renderQuestion(name, val){
     return (
       <Question
       name={name}
-      value={this.state[name]}
+      value={val}
+      handleClick={this.handleClick}
       />
   )}
 
   render(){
     return(
     <div className="mb-3">
-        {this.renderQuestion('avail')}
+        {this.renderQuestion('avail', this.state['avail'])}
         <br></br>
-        {this.renderQuestion('slot_type')}
+        {this.renderQuestion('slot_type', this.state['slot_type'])}
         <br></br>
-        {this.renderQuestion('no_1')}
+        {this.renderQuestion('no_1', this.state['no_1'])}
         <br></br>
-        {this.renderQuestion('guarantee_shift')}
+        {this.renderQuestion('guarantee_shift', this.state['guarantee_shift'])}
         <br></br>
-        {this.renderQuestion('shift_cap')}
+        {this.renderQuestion('shift_cap', this.state['shift_cap'])}
         <br></br>
-        {this.renderQuestion('equality')}
+        {this.renderQuestion('equality', this.state['equality'])}
     </div>
   )}
 }
