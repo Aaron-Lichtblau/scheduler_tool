@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import {FileForm, BasicForm} from './Form.js';
 import React, { useState, setState } from 'react';
 import axios from "axios";
 import {Button, Nav, Navbar, Form, FormControl, Container, Row, Col, Modal} from 'react-bootstrap';
@@ -139,83 +140,9 @@ function BasicModal() {
 }
 
 
-class BasicForm extends React.Component {
 
-  render(){
-    return(
-    <div className="mb-3">
-        <Form.Check inline label="1" type='radio' id={`inline-radio-1`} name='avail'/>
-        <Form.Check inline label="2" type='radio' id={`inline-radio-2`} name='avail'/>
-        <Form.Check inline label="3" type='radio' id={`inline-radio-3`} name='avail'/>
-        <Form.Check inline label="4" type='radio' id={`inline-radio-1`} name='avail'/>
-        <Form.Check inline label="5" type='radio' id={`inline-radio-2`} name='avail'/>
-        <br></br>
-        <Form.Check inline label="1" type='radio' id={`inline-radio-3`} name='slot_type'/>
-        <Form.Check inline label="2" type='radio' id={`inline-radio-1`} name='slot_type'/>
-        <Form.Check inline label="3" type='radio' id={`inline-radio-2`} name='slot_type'/>
-        <Form.Check inline label="4" type='radio' id={`inline-radio-3`} name='slot_type'/>
-        <Form.Check inline label="5" type='radio' id={`inline-radio-3`} name='slot_type'/>
-        <br></br>
-        <Form.Check inline label="1" type='radio' id={`inline-radio-1`} name='no_1'/>
-        <Form.Check inline label="2" type='radio' id={`inline-radio-2`} name='no_1'/>
-        <Form.Check inline label="3" type='radio' id={`inline-radio-3`} name='no_1'/>
-        <Form.Check inline label="4" type='radio' id={`inline-radio-1`} name='no_1'/>
-        <Form.Check inline label="5" type='radio' id={`inline-radio-2`} name='no_1'/>
-        <br></br>
-        <Form.Check inline label="1" type='radio' id={`inline-radio-3`} name='guarantee_shift'/>
-        <Form.Check inline label="2" type='radio' id={`inline-radio-1`} name='guarantee_shift'/>
-        <Form.Check inline label="3" type='radio' id={`inline-radio-2`} name='guarantee_shift'/>
-        <Form.Check inline label="4" type='radio' id={`inline-radio-3`} name='guarantee_shift'/>
-        <Form.Check inline label="5" type='radio' id={`inline-radio-3`} name='guarantee_shift'/>
-        <br></br>
-        <Form.Check inline label="1" type='radio' id={`inline-radio-1`} name='shift_cap'/>
-        <Form.Check inline label="2" type='radio' id={`inline-radio-2`} name='shift_cap'/>
-        <Form.Check inline label="3" type='radio' id={`inline-radio-3`} name='shift_cap'/>
-        <Form.Check inline label="4" type='radio' id={`inline-radio-1`} name='shift_cap'/>
-        <Form.Check inline label="5" type='radio' id={`inline-radio-2`} name='shift_cap'/>
-        <br></br>
-        <Form.Check inline label="1" type='radio' id={`inline-radio-3`} name='equality'/>
-        <Form.Check inline label="2" type='radio' id={`inline-radio-1`} name='equality'/>
-        <Form.Check inline label="3" type='radio' id={`inline-radio-2`} name='equality'/>
-        <Form.Check inline label="4" type='radio' id={`inline-radio-3`} name='equality'/>
-        <Form.Check inline label="5" type='radio' id={`inline-radio-3`} name='equality'/>
-    </div>
-  )}
-}
 
-class FileForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      fruit: 'coconut',
-      file: ''
-  };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-    this.setState({[name]: value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.name);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <div className = "inputFile">
-        <Form.File id="exampleFormControlFile1" label="" width ="60"/>
-      </div>
-    );
-  }
-}
 
 
 function AdvancedModal() {
