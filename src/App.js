@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import {FileForm, BasicForm} from './Form.js';
+import {FileForm} from './Form.js';
+import {BasicModal, AdvancedModal} from './Modal.js';
 import React, { useState, setState } from 'react';
 import axios from "axios";
-import {Button, Nav, Navbar, Form, FormControl, Container, Row, Col, Modal} from 'react-bootstrap';
+import {Button, Nav, Navbar, Form, FormControl, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
@@ -66,7 +67,10 @@ function App() {
           <h3>Step 2: Select Basic Settings
           </h3>
           <p>Fill in the questions to set the basic settings for the scheduler tool to use.
-          The outputted schedule will be based on these preferences.
+          The outputted schedule will be based on these preferences. Keep in mind that these preferences
+          are competing. Scores of 4 or 5 will be treated as strict preferences: adhered to in
+          all situations, unless there is a competing higher scored preference. Scores of 3 and below will
+          be treated as soft preferences: adhered to as bonuses.
           </p>
 
           </Col>
@@ -107,75 +111,19 @@ function App() {
     </div>
   );
 }
-function BasicModal() {
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+class ButtonControl extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isFile: false,
+      basicSet : false,
+      advSet : false,
+      canCreate : false,
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Select Basic Settings
-      </Button>
-
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Basic Settings</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <BasicForm/>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary">Confirm</Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
 }
-
-
-
-
-
-
-
-function AdvancedModal() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Select Advanced Settings
-      </Button>
-
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Advanced Settings</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary">Confirm</Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-}
-
 
 export default App;

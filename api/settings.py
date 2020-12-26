@@ -1,0 +1,2 @@
+df = None
+slotdict= None
