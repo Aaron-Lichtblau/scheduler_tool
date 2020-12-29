@@ -8,7 +8,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Radio(props) {
   return (
     <>
-    <Form.Check inline label={props.value} type='radio' id={`inline-radio`} name={props.type} onClick={props.onClick}/>
+    <Form.Check
+    inline label={props.value}
+    type='radio' id={`inline-radio`}
+    name={props.type}
+    onClick={props.onClick}
+    defaultChecked={props.defaultValue}
+    />
     </>
   )
 }
@@ -20,27 +26,30 @@ class Question extends React.Component {
     this.state = {
       name: props.name,
       value: props.value,
+      defaultValue: props.defaultValue
     };
   }
 
-  renderRadio(i) {
+  renderRadio(i, isChecked) {
     return(
         <Radio
           type = {this.props.name}
           value= {i}
           onClick={() => this.props.handleClick(this.props.name,i)}
+          defaultValue={isChecked}
         />
       );
     }
-  render(name) {
-
+  render() {
+    var isChecked = Array(5).fill(false);
+    isChecked[this.state.defaultValue - 1] = true;
     return(
       <div>
-        {this.renderRadio('1')}
-        {this.renderRadio('2')}
-        {this.renderRadio('3')}
-        {this.renderRadio('4')}
-        {this.renderRadio('5')}
+        {this.renderRadio('1', isChecked[0])}
+        {this.renderRadio('2', isChecked[1])}
+        {this.renderRadio('3', isChecked[2])}
+        {this.renderRadio('4', isChecked[3])}
+        {this.renderRadio('5', isChecked[4])}
       </div>
     )
   }
@@ -58,7 +67,6 @@ class BasicForm extends React.Component {
 
   this.state = {
     slots: props.slots,
-    duration: 120,
     avail : 5,
     slot_type: 3,
     no_1: 2,
@@ -121,6 +129,7 @@ class BasicForm extends React.Component {
       name={name}
       value={val}
       handleClick={this.handleClick}
+      defaultValue={this.state[name]}
       />
   )}
 

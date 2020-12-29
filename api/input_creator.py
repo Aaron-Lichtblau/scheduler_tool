@@ -12,12 +12,17 @@ import constants
 #-------------------------------------------------------------------------------
 # Input Creation and Processing
 #-------------------------------------------------------------------------------
+def convert_userWeights(userWeights):
+    for key in userWeights:
+        userWeights[key] = (userWeights[key] * 2 - 1) % 10
+    return userWeights
+
 
 def get_num_shifts(slotdict):
     '''gets the number of shifts in the entire schedule'''
     num_shifts = 0
     for slot in slotdict:
-        num_shifts += slotdict[slot]
+        num_shifts += int(slotdict[slot])
     return num_shifts
 
 def get_overlaps(slots, min_gap, duration):

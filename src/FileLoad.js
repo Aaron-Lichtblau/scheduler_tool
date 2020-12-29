@@ -12,7 +12,7 @@ class SlotNum extends React.Component {
     super(props);
     this.state = {
       slot: props.slot,
-      // value: props.value
+      value: props.value
     }
   }
 
@@ -25,6 +25,7 @@ class SlotNum extends React.Component {
       type="number"
       min="1"
       onChange={(e) => this.props.onChange(this.props.slot, e.target.value)}
+      defaultValue={this.state.value}
       />
       <Form.Control.Feedback type="invalid">
         Please provide a valid integer.
@@ -42,12 +43,14 @@ class FileForm extends React.Component {
     this.state = {
       file: '',
       slotdict: {},
+      duration: 120,
       validated: false,
       submitButton: true
   };
     this.handleFileChange = this.handleFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSlotChange = this.handleSlotChange.bind(this);
+    this.handleDurationChange = this.handleDurationChange.bind(this);
   }
 
   handleSubmit(event) {
@@ -62,7 +65,10 @@ class FileForm extends React.Component {
     self.setState({
       validated: true,
       })
-    var data = {slotdict: this.state.slotdict}
+    var data = {
+      slotdict: this.state.slotdict,
+      duration: this.state.duration
+    }
     axios.post('/slotdict', data).then(res => { // then print response status
             console.warn(res);
         })
@@ -74,6 +80,9 @@ class FileForm extends React.Component {
     newSlotDict[slot] = value;
     this.setState({slotdict: newSlotDict});
     // console.log(newSlotDict)
+  }
+  handleDurationChange(slot, value){
+    this.setState({duration: value})
   }
 
   handleFileChange(event) {
@@ -120,6 +129,7 @@ class FileForm extends React.Component {
     />
     </li>
   );
+
     return (
       <div id = "inputFile">
         <Form.File
@@ -128,6 +138,11 @@ class FileForm extends React.Component {
         width ="60"
         onChange={this.handleFileChange}/>
         <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
+          <SlotNum
+          slot= "Slot Duration in Mins"
+          onChange= {this.handleDurationChange}
+          value= {this.state.duration}
+          />
           <Form.Row>
           <ul>
           {slotList}

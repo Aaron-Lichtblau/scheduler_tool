@@ -1,3 +1,7 @@
+#-------------------------------------------------------------------------------
+# This file contains deep copies of original settings (not to be altered by user)
+#-------------------------------------------------------------------------------
+
 MINUTES_IN_HOUR = 60
 SINGLE_SLOT_SUFFIX = '_0'
 DOUBLE_SLOT_SUFFIX = '_1'

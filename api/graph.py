@@ -35,6 +35,7 @@ def weight_edge(df, student_node, slot_node, weight_dict, num_slots, slot_durati
     # preprocess weights to avoid infeasible solutions
     if tier_dict['avail'] > 7:
         tier_dict['avail'] = 7
+        # print('changed avail')
     # for weight in tier_dict:
     #     if tier_dict[weight] > 9:
     #         tier_dict[weight] = 9

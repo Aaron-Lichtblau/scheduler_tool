@@ -80,7 +80,7 @@ def solve_wbm(from_nodes, to_nodes, wt, df, slotdict, min_exp, min_skill, stress
 # Guarantees that total sum of shifts is slotdict sum + flex_shifts
     total_shifts = 0
     for slot in slotdict:
-        total_shifts += slotdict[slot]
+        total_shifts += int(slotdict[slot])
     total_shifts += flex_shifts
     all_single_shifts = helpers.get_slots_of_type(to_nodes, 0)
     all_double_shifts = helpers.get_slots_of_type(to_nodes, 1)

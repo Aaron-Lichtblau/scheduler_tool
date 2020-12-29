@@ -1,6 +1,6 @@
 from schedule import Schedule
 import input_creator
-import output_creator
+# import output_creator
 import stats
 import graph
 import solver
@@ -39,23 +39,23 @@ def run(clean_input):
     student_stats = stats.stud_stats(df, schedule, prev_slot)
     slot_stats = stats.slotsize_stats(schedule, slotdict)
     #format output
-    format_weights = {'weights used': weight_dict}
+    # format_weights = {'weights used': weight_dict}
     sched_stats = {'avg hap': happiness_stats[0], 'std dev of hap': happiness_stats[1], 'min hap stud outliers': happiness_stats[2], 'avail to hap corr': corr_stats[0], 'skill to hap corr': corr_stats[1], 'experience to hap corr': corr_stats[2], 'studs who got 1s': student_stats[0], 'studs without shift': student_stats[2], 'wrong shift type studs': student_stats[1]}
-    output_data = [format_weights, schedule.schedule, df, sched_stats]
+    output_data = {"weights": weight_dict, "schedule": schedule.schedule, "stats": sched_stats}
     #print the output
-    for output in output_data:
-        print(output)
+    # for output in output_data:
+        # print(output)
 
     return(output_data)
 
 
-def add_output(output_data):
-    weights = output_data[0]
-    schedule = output_data[1]
-    df = output_data[2]
-    sched_stats = output_data[3]
-    file = output_creator.add_file()
-    output_creator.add_output(file, weights, schedule, sched_stats)
+# def add_output(output_data):
+#     weights = output_data[0]
+#     schedule = output_data[1]
+#     df = output_data[2]
+#     sched_stats = output_data[3]
+#     file = output_creator.add_file()
+#     output_creator.add_output(file, weights, schedule, sched_stats)
 
 def main():
     default_input = input_creator.process_input(None, None)

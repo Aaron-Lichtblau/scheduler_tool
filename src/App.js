@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
 import {FileForm} from './FileLoad.js';
 import {BasicForm, AdvancedForm} from './Form.js';
 import React from 'react';
@@ -7,7 +8,35 @@ import {Button, Nav, Navbar, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      schedule: null,
+      stats: null,
+    };
+
+  }
+
+  handleSubmit(){
+    var self = this;
+    axios.get('/results').then(
+    (resp) => {
+        self.setState({
+          schedule: resp.data.schedule,
+          stats: resp.data.stats,
+        });
+      }
+    ,
+    (error) => {
+        self.setState({error})
+      })
+  }
+
+
+  render(){
   return (
     <div className="App">
     {/* a bunch of navbar bs that looks cool*/}
@@ -60,6 +89,7 @@ function App() {
             <FileForm/>
           </Col>
         </Row>
+        <br></br>
         <Row>
           <Col sm={5}>
 
@@ -94,7 +124,7 @@ function App() {
         <Row>
           <Col sm={5}>
 
-            <Button variant="primary" onClick="handleSubmit" size="lg" disabled> Create a Schedule!</Button>
+            <Button variant="primary" onClick={this.handleSubmit} size="lg"> Create a Schedule!</Button>
 
           </Col>
           <Col sm={7}>
@@ -109,6 +139,7 @@ function App() {
 
     </div>
   );
+}
 }
 
 class ButtonControl extends React.Component {
