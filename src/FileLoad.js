@@ -62,6 +62,10 @@ class FileForm extends React.Component {
     self.setState({
       validated: true,
       })
+    var data = {slotdict: this.state.slotdict}
+    axios.post('/slotdict', data).then(res => { // then print response status
+            console.warn(res);
+        })
   }
 
   handleSlotChange(slot, value) {
@@ -80,6 +84,7 @@ class FileForm extends React.Component {
       submitButton: false
     });
     this.fetchData();
+    // console.log(this.state.slotdict);
     event.preventDefault();
   }
 

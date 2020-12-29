@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {FileForm} from './FileLoad.js';
-import {BasicModal, AdvancedModal} from './Modal.js';
+import {BasicForm, AdvancedForm} from './Form.js';
 import React from 'react';
 import {Button, Nav, Navbar, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -74,7 +74,7 @@ function App() {
 
           </Col>
           <Col sm={7}>
-            <BasicModal />
+            <BasicForm />
           </Col>
         </Row>
         <Row>
@@ -88,7 +88,7 @@ function App() {
 
           </Col>
           <Col sm={7}>
-            <AdvancedModal />
+            <AdvancedForm />
           </Col>
         </Row>
         <Row>

@@ -9,7 +9,7 @@ app = Flask(__name__)
 def get_schedule():
     return {schedule: schedule_object}
 
-@app.route('/file', methods=['GET', 'POST'])
+@app.route('/file', methods=['GET','POST'])
 def get_slotDict():
     data = request.get_json()
     # for now using path of csv file --> will be:
@@ -20,9 +20,24 @@ def get_slotDict():
 
     #dict of slots to check as keys, and overlapping slots as values (student won't be placed in overlap)
     settings.slots = {x: None for x in helpers.get_slots(df)}
-
     return jsonify({'slots': settings.slots})
 
 @app.route('/file/df', methods=['GET'])
 def send_df():
     return jsonify({'slots': settings.slots})
+
+@app.route('/slotdict', methods=['POST'])
+def get_Userslots():
+    data = request.get_json()
+    settings.slotdict = data['slotdict']
+    # print(settings.slotdict)
+    return jsonify({'slotdict': settings.slotdict})
+
+@app.route('/basic', methods = ['POST'])
+def get_Basic():
+    data = request.get_json()
+    userWeights = data['weightdict']
+    # convert user weights into 1-9 scale
+    settings.weightdict = userWeights
+    print(settings.weightdict)
+    return jsonify({'weightdict': settings.weightdict})
