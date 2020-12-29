@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from "axios";
 import {Button, Form, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
@@ -160,121 +159,7 @@ class BasicForm extends React.Component {
     </div>
   )}
 }
-class FileForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      file: ''
-  };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-    this.setState({file: value});
-    event.preventDefault();
-  }
 
-  componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if (this.state.file !== prevProps.file) {
-      console.log(this.state.file);
-      console.log('hi');
-      this.fetchData();
-    }
-  }
-
-  fetchData(){
-    // const data = new FormData();
-    // data.append('file', this.state.file);
-    var self = this;
-    // const config = {headers: { 'content-type': 'multipart/form-data' }}
-    var data = {file: this.state.file};
-    axios.post('/file', data)
-    .then(res => { // then print response status
-        console.warn(res);
-    })
-    // axios.get('/file/df').then(
-    // (response) => {
-    //   self.setState({
-    //     df: response.data.df
-    //   });
-    //   console.log(response.data.df);
-    // },
-    // (error) => {
-    //   self.setState({
-    //     error
-    //   });
-    // }
-    // )
-  }
-
-  render() {
-    return (
-      <div className = "inputFile">
-        <Form.File
-        id="exampleFormControlFile1"
-        label=""
-        width ="60"
-        onChange={this.handleInputChange}/>
-      </div>
-    );
-  }
-}
-// class FileForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       selectedFile: ''
-//   };
-//   }
-//
-//   submit(event) {
-//     // send file and create slotdict
-//     this.setState({
-//         selectedFile: event.target.files[0],
-//       })
-//     console.log('A name was submitted: ' + this.state.selectedFile);
-//
-//     const data = new FormData();
-//     data.append('file', this.state.selectedFile);
-//     var self = this;
-//     const config = {headers: { 'content-type': 'multipart/form-data' }}
-//     axios.post('/file', data, config)
-//     .then(res => { // then print response status
-//         console.warn(res);
-//     })
-//     axios.get('/file/df').then(
-//     (response) => {
-//       self.setState({
-//         selectedFile: response.data.file
-//       });
-//       console.log(response.data.file);
-//     },
-//     (error) => {
-//       self.setState({
-//         error
-//       });
-//     }
-//   )
-//     // event.preventDefault();
-//   };
-//
-//   render() {
-//     return (
-//       <div className = "inputFile">
-//         <Form.File
-//           id="exampleFormControlFile1"
-//           label=""
-//           width ="60"
-//           onChange={()=>this.submit()}
-//         />
-//       </div>
-//     );
-//   }
-// }
-
-export {BasicForm, FileForm};
+export {BasicForm};

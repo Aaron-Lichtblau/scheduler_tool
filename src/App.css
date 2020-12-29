@@ -21,6 +21,15 @@ h3 {
   color: #EC5B0E;
 }
 
+#inputFile ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+}
+#inputFile li{
+    display: inline;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

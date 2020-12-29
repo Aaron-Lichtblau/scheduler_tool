@@ -1,2 +1,2 @@
-df = None
+slots = None
 slotdict= None

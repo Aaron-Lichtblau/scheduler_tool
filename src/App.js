@@ -1,10 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import {FileForm} from './Form.js';
+import {FileForm} from './FileLoad.js';
 import {BasicModal, AdvancedModal} from './Modal.js';
-import React, { useState, setState } from 'react';
-import axios from "axios";
-import {Button, Nav, Navbar, Form, FormControl, Container, Row, Col} from 'react-bootstrap';
+import React from 'react';
+import {Button, Nav, Navbar, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
