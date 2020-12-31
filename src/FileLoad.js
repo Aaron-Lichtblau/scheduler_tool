@@ -1,40 +1,34 @@
 import React from 'react';
 import axios from "axios";
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, Accordion, Card, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
 
 
 
-class SlotNum extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      slot: props.slot,
-      value: props.value
-    }
-  }
-
-  render(){
-    return(
-      <div class="col-xs-1">
-      <Form.Label>{this.state.slot}</Form.Label>
+function SlotNum(props) {
+  return(
+    <div class="col-xs-1">
+    <Form.Row>
+      <li>
+      <Form.Label>{props.slot}</Form.Label>
       <Form.Control
       required
       type="number"
       min="1"
-      onChange={(e) => this.props.onChange(this.props.slot, e.target.value)}
-      defaultValue={this.state.value}
+      onChange={(e) => props.onChange(props.slot, e.target.value)}
+      defaultValue={props.value}
       />
       <Form.Control.Feedback type="invalid">
         Please provide a valid integer.
       </Form.Control.Feedback>
-      </div>
-    )
-  }
-}
+      </li>
+    </Form.Row>
+    </div>
+  );
 
+}
 
 
 class FileForm extends React.Component {
@@ -42,10 +36,11 @@ class FileForm extends React.Component {
     super(props);
     this.state = {
       file: '',
-      slotdict: {},
+      slotdict: {"Mo_1900" : 0, "Mo_2100" : 0,"Tu_1900" : 0, "Tu_2100" : 0,"We_1900" : 0, "We_2100" : 0,"Th_1900" : 0, "Th_2100" : 0,"Fr_1900" : 0, "Fr_2100" : 0,"Sa_1500" : 0, "Sa_1600" : 0,"Sa_1700" : 0,"Su_1700" : 0,"Su_1800" : 0,"Su_1900" : 0,"Su_2000" : 0, "Su_2100" : 0},
+      hideSlots: true,
       duration: 120,
       validated: false,
-      submitButton: true
+      hideSubmitButton: true
   };
     this.handleFileChange = this.handleFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -90,7 +85,8 @@ class FileForm extends React.Component {
     const value = target.value;
     this.setState({
       file: value,
-      submitButton: false
+      hideSubmitButton: false,
+      hideSlots: false
     });
     this.fetchData();
     // console.log(this.state.slotdict);
@@ -108,6 +104,7 @@ class FileForm extends React.Component {
     })
     axios.get('/file/df').then(
     (response) => {
+        console.log(response.data.slots);
         self.setState({
           slotdict: response.data.slots,
           validated: true
@@ -126,30 +123,43 @@ class FileForm extends React.Component {
     <SlotNum
     slot={slot}
     onChange={this.handleSlotChange}
+    value={this.state.slotdict[slot]}
     />
     </li>
   );
 
     return (
-      <div id = "inputFile">
-        <Form.File
-        id="exampleFormControlFile1"
-        label=""
-        width ="60"
-        onChange={this.handleFileChange}/>
-        <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-          <SlotNum
-          slot= "Slot Duration in Mins"
-          onChange= {this.handleDurationChange}
-          value= {this.state.duration}
-          />
-          <Form.Row>
-          <ul>
-          {slotList}
-          </ul>
-          </Form.Row>
-        <Button type="submit" disabled={this.state.submitButton}>Submit slot sizes</Button>
-        </Form>
+      <div id = "fileForm">
+      <Accordion defaultActiveKey="0">
+      <Card>
+        <Accordion.Collapse eventKey="0">
+
+          <Card.Body>
+              <Form.File
+                id="exampleFormControlFile1"
+                label=""
+                width ="60"
+                onChange={this.handleFileChange}/>
+              <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
+            <br></br>
+            <SlotNum
+                slot= "Slot Duration in Mins"
+                onChange= {this.handleDurationChange}
+                value= {this.state.duration}/>
+              <div hidden={this.state.hideSlots}>
+                Select Number of TA's in each slot:
+                <ul> {slotList} </ul>
+              </div>
+            </Form>
+          </Card.Body>
+        </Accordion.Collapse>
+        <Card.Footer>
+          <Accordion.Toggle as={Button} type="submit" disabled={this.state.hideSubmitButton} eventKey="0">
+            Submit Part 1
+          </Accordion.Toggle>
+        </Card.Footer>
+      </Card>
+      </Accordion>
       </div>
     );
   }

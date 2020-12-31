@@ -2,9 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
 import {FileForm} from './FileLoad.js';
+import {Stats} from './Results.js';
 import {BasicForm, AdvancedForm} from './Form.js';
 import React from 'react';
-import {Button, Nav, Navbar, Container, Row, Col} from 'react-bootstrap';
+import {Button, Nav, Navbar, Container, Row, Col, Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
@@ -15,7 +16,7 @@ class App extends React.Component {
 
     this.state = {
       schedule: null,
-      stats: null,
+      stats: {"to be displayed": "stat data"},
     };
 
   }
@@ -24,19 +25,24 @@ class App extends React.Component {
     var self = this;
     axios.get('/results').then(
     (resp) => {
+        console.log(resp.data);
+        var result = JSON.parse(resp.data.replace(/\bNaN\b/g, "N/A"));
         self.setState({
-          schedule: resp.data.schedule,
-          stats: resp.data.stats,
+          stats: result,
         });
       }
     ,
     (error) => {
         self.setState({error})
-      })
+      }
+    )
   }
 
-
   render(){
+    const hrStyle = {
+      "border-color": 'black'
+    };
+    console.log(this.state.stats);
   return (
     <div className="App">
     {/* a bunch of navbar bs that looks cool*/}
@@ -52,11 +58,13 @@ class App extends React.Component {
         Lab Scheduler
       </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="navbar">
           <Nav className="mr-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
           </Nav>
+          <Form inline className="welcomeText">
+          </Form>
         </Navbar.Collapse>
       </Navbar>
       <br></br>
@@ -67,11 +75,6 @@ class App extends React.Component {
         <Row>
         <Col sm></Col>
         <Col md="auto">
-          <div className="welcomeText">
-          <h2>Welcome to the Lab Scheduler!
-          </h2>
-          <br></br>
-          </div>
         </Col>
         <Col sm></Col>
         </Row>
@@ -81,7 +84,11 @@ class App extends React.Component {
           <h3>Step 1: Upload time data
           </h3>
           <p>Select the .csv file of labTA's time preferences to upload. Make sure that your file is formatted correctly.
-          To see an example file, refer to default_input.csv
+          To see an example file, refer to ** link to github default_input.csv **.
+
+          Then input the duration of all time slots (all slots must have same duration).
+
+          Lastly, input the desired number of TA's working in each slot.
           </p>
 
           </Col>
@@ -89,6 +96,8 @@ class App extends React.Component {
             <FileForm/>
           </Col>
         </Row>
+        <br></br>
+        <hr style={hrStyle}></hr>
         <br></br>
         <Row>
           <Col sm={5}>
@@ -107,6 +116,9 @@ class App extends React.Component {
             <BasicForm />
           </Col>
         </Row>
+        <br></br>
+        <hr style={hrStyle}></hr>
+        <br></br>
         <Row>
           <Col sm={5}>
 
@@ -130,9 +142,21 @@ class App extends React.Component {
           <Col sm={7}>
           </Col>
         </Row>
-
+        <br></br>
+        <hr style={hrStyle}></hr>
+        <br></br>
         <Row>
+          <Col sm={5}>
+          <h3> Schedule Stats </h3>
+          <Stats
+          stats={this.state.stats}
+          />
 
+          </Col>
+          <Col sm={7}>
+          <h3> Your Schedule </h3>
+          <p> {this.state.schedule} </p>
+          </Col>
         </Row>
       </Container>
 
@@ -140,20 +164,6 @@ class App extends React.Component {
     </div>
   );
 }
-}
-
-class ButtonControl extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      isFile: false,
-      basicSet : false,
-      advSet : false,
-      canCreate : false,
-    }
-    this.handleClick = this.handleClick.bind(this);
-  }
-
 }
 
 export default App;

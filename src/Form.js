@@ -148,7 +148,7 @@ class BasicForm extends React.Component {
       keyboard={false}
     >
       <Modal.Header closeButton>
-        <Modal.Title>Basic Settings</Modal.Title>
+        <Modal.Title>Basic Settings (defaults were settings used in 2019)</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Row>

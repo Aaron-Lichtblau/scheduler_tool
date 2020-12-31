@@ -31,7 +31,10 @@ def get_Userslots():
     data = request.get_json()
     slotdict = data['slotdict']
     for slot in slotdict:
-        slotdict[slot] = int(slotdict[slot])
+        if slotdict[slot] == None:
+            slotdict[slot] = 1
+        else:
+            slotdict[slot] = int(slotdict[slot])
     settings.slotdict = slotdict
     settings.duration = int(data['duration'])
     # print(settings.slotdict)
@@ -67,4 +70,4 @@ def display_results():
     print(output_data['schedule'])
     print(output_data['stats'])
 
-    return(jsonify(output_data))
+    return(jsonify(output_data['stats']))
