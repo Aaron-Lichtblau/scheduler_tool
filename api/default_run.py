@@ -41,7 +41,7 @@ def run(clean_input):
     #format output
     # format_weights = {'weights used': weight_dict}
     sched_stats = {'avg hap': happiness_stats[0], 'std dev of hap': happiness_stats[1], 'min hap stud outliers': happiness_stats[2], 'avail to hap corr': corr_stats[0], 'skill to hap corr': corr_stats[1], 'experience to hap corr': corr_stats[2], 'studs who got 1s': student_stats[0], 'studs without shift': student_stats[2], 'wrong shift type studs': student_stats[1]}
-    output_data = {"weights": weight_dict, "schedule": schedule.schedule, "stats": sched_stats}
+    output_data = {"schedule": schedule.schedule, "stats": sched_stats, "df":df}
     #print the output
     # for output in output_data:
         # print(output)

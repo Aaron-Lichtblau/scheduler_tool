@@ -59,14 +59,14 @@ class FileForm extends React.Component {
 
     self.setState({
       validated: true,
-      })
+    });
     var data = {
       slotdict: this.state.slotdict,
       duration: this.state.duration
-    }
+    };
     axios.post('/slotdict', data).then(res => { // then print response status
             console.warn(res);
-        })
+        });
   }
 
   handleSlotChange(slot, value) {
@@ -101,19 +101,20 @@ class FileForm extends React.Component {
     axios.post('/file', data)
     .then(res => { // then print response status
         console.warn(res);
+        axios.get('/file/df').then(
+        (response) => {
+            console.log(response.data.slotdict);
+            self.setState({
+              slotdict: response.data.slotdict,
+              validated: true
+            })}
+            // console.log(response.data.slots);
+        ,
+        (error) => {
+            self.setState({error})
+          })
     })
-    axios.get('/file/df').then(
-    (response) => {
-        console.log(response.data.slots);
-        self.setState({
-          slotdict: response.data.slots,
-          validated: true
-        })}
-        // console.log(response.data.slots);
-    ,
-    (error) => {
-        self.setState({error})
-      })
+
     }
 
 
@@ -141,7 +142,6 @@ class FileForm extends React.Component {
                 width ="60"
                 onChange={this.handleFileChange}/>
               <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-            <br></br>
             <SlotNum
                 slot= "Slot Duration in Mins"
                 onChange= {this.handleDurationChange}
@@ -154,7 +154,7 @@ class FileForm extends React.Component {
           </Card.Body>
         </Accordion.Collapse>
         <Card.Footer>
-          <Accordion.Toggle as={Button} type="submit" disabled={this.state.hideSubmitButton} eventKey="0">
+          <Accordion.Toggle as={Button} type="submit" onClick={this.handleSubmit} disabled={this.state.hideSubmitButton} eventKey="0">
             Submit Part 1
           </Accordion.Toggle>
         </Card.Footer>

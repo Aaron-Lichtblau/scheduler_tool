@@ -2,12 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
 import {FileForm} from './FileLoad.js';
-import {Stats} from './Results.js';
-import {BasicForm, AdvancedForm} from './Form.js';
+import {DataFrame, Stats} from './Results.js';
+import {BasicForm} from './BasicForm.js';
+import {AdvancedForm} from './AdvancedForm.js';
 import React from 'react';
 import {Button, Nav, Navbar, Container, Row, Col, Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -17,18 +20,23 @@ class App extends React.Component {
     this.state = {
       schedule: null,
       stats: {"to be displayed": "stat data"},
+      df: [["headers"],{"index": ["row"]}],
+      hideResults: true
     };
-
   }
+
 
   handleSubmit(){
     var self = this;
     axios.get('/results').then(
     (resp) => {
         console.log(resp.data);
-        var result = JSON.parse(resp.data.replace(/\bNaN\b/g, "N/A"));
+        var result = resp.data;
         self.setState({
-          stats: result,
+          stats: result['stats'],
+          schedule: JSON.stringify(result['schedule']),
+          df: result['df'],
+          hideResults: false
         });
       }
     ,
@@ -42,7 +50,8 @@ class App extends React.Component {
     const hrStyle = {
       "border-color": 'black'
     };
-    console.log(this.state.stats);
+
+    console.log(this.state.df);
   return (
     <div className="App">
     {/* a bunch of navbar bs that looks cool*/}
@@ -83,10 +92,10 @@ class App extends React.Component {
 
           <h3>Step 1: Upload time data
           </h3>
-          <p>Select the .csv file of labTA's time preferences to upload. Make sure that your file is formatted correctly.
+          <p>Download your spreadsheet of labTA's time preferences as a .csv file. Then, upload your file by clicking "choosse file". Make sure that your file is formatted correctly.
           To see an example file, refer to ** link to github default_input.csv **.
 
-          Then input the duration of all time slots (all slots must have same duration).
+          Then input the duration of a time slots (default is 2 hours).
 
           Lastly, input the desired number of TA's working in each slot.
           </p>
@@ -106,7 +115,7 @@ class App extends React.Component {
           </h3>
           <p>Fill in the questions to set the basic settings for the scheduler tool to use.
           The outputted schedule will be based on these preferences. Keep in mind that these preferences
-          are competing. Scores of 4 or 5 will be treated as strict preferences: adhered to in
+          are competing. Scores of 4 and above will be treated as strict preferences: adhered to in
           all situations, unless there is a competing higher scored preference. Scores of 3 and below will
           be treated as soft preferences: adhered to as bonuses.
           </p>
@@ -130,7 +139,7 @@ class App extends React.Component {
 
           </Col>
           <Col sm={7}>
-            <AdvancedForm />
+            <AdvancedForm/>
           </Col>
         </Row>
         <Row>
@@ -145,19 +154,28 @@ class App extends React.Component {
         <br></br>
         <hr style={hrStyle}></hr>
         <br></br>
-        <Row>
-          <Col sm={5}>
+        <div className="Results" hidden={this.state.hideResults}>
+          <Row>
+
+            <h3> Your Schedule </h3>
+            <div class= "container horizontal-scrollable">
+            <DataFrame df={this.state.df}/>
+            </div>
+
+          </Row>
+
+          <Row>
           <h3> Schedule Stats </h3>
           <Stats
           stats={this.state.stats}
           />
+          </Row>
 
-          </Col>
-          <Col sm={7}>
-          <h3> Your Schedule </h3>
-          <p> {this.state.schedule} </p>
-          </Col>
-        </Row>
+          <Row>
+          <h3> Print Schedule </h3>
+          <p> {this.state.schedule}</p>
+          </Row>
+        </div>
       </Container>
 
 

@@ -2,7 +2,6 @@
 # This file contains shallow copies of original settings (to be altered by user)
 #-------------------------------------------------------------------------------
 
-slots = None
 slotdict= None
 weightdict= {'slot_type' : 8, 'no_1' : 6, 'guarantee_shift' : 7, 'avail' : 6, 'shift_cap' : 5, 'equality' : 3}
 df = None

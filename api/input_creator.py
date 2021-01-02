@@ -14,7 +14,7 @@ import constants
 #-------------------------------------------------------------------------------
 def convert_userWeights(userWeights):
     for key in userWeights:
-        userWeights[key] = (userWeights[key] * 2 - 1) % 10
+        userWeights[key] = (int(userWeights[key]) + 2)
     return userWeights
 
 

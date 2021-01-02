@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #CED8DF;
+  background-color: #36454F;
 }
 
 .welcomeText{
@@ -21,10 +21,24 @@
 }
 p{
   text-align: left;
+  color: white;
 }
 h3 {
-  color: #E32227;
+  color: #FF7307;
   text-align: left;
+}
+.horizontal-scrollable  {
+  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y:hidden;
+  border-left-style: solid;
+}
+
+.col-xs-12 {
+  color: white;
+  font-size: 18px;
+  padding-bottom: 20px;
+  padding-top: 18px;
 }
 
 #fileForm ul{

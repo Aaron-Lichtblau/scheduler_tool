@@ -98,6 +98,9 @@ def corr_stats(df, schedule):
     skill_corr = float(df['skill'].corr(df['happiness'], method='pearson'))
     exp_corr = float(df['experience'].corr(df['happiness'], method='pearson'))
     corr_stats = [avail_corr, skill_corr, exp_corr]
+    for i in range(len(corr_stats)):
+        if math.isnan(corr_stats[i]):
+            corr_stats[i] = "N/A"
     return(corr_stats)
 
 #3. studs got 1's, studs got wrong slot type, studs without shift
