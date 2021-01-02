@@ -82,21 +82,23 @@ class FileForm extends React.Component {
 
   handleFileChange(event) {
     const target = event.target;
-    const value = target.value;
+    const value = target.files[0];
+    console.log(value);
+
     this.setState({
       file: value,
       hideSubmitButton: false,
       hideSlots: false
     });
-    this.fetchData();
-    // console.log(this.state.slotdict);
+    this.fetchData(value);
+
     event.preventDefault();
   }
 
-  fetchData(){
+  fetchData(path){
 
     var self = this;
-    var data = {file: this.state.file};
+    var data = {file: path};
 
     axios.post('/file', data)
     .then(res => { // then print response status
@@ -140,6 +142,7 @@ class FileForm extends React.Component {
                 id="exampleFormControlFile1"
                 label=""
                 width ="60"
+                accept=".csv"
                 onChange={this.handleFileChange}/>
               <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
             <SlotNum

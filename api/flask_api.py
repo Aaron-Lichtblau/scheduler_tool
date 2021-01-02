@@ -16,8 +16,9 @@ def get_schedule():
 def get_slotDict():
     data = request.get_json()
     # for now using path of csv file --> will be:
-    # df = input_creator.get_df(data['file'])
-    # settings.file = data['file']
+    df = input_creator.get_df(data['file'])
+    settings.file = data['file']
+    print(settings.file)
     df = input_creator.get_df(settings.file)
 
     settings.df = df
