@@ -12,8 +12,17 @@
   height: 5vmin;
   pointer-events: none;
 }
-
-
+.container {
+  position: relative;
+}
+.submitButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalQues{
+  color: black;
+}
 .inputFile{
   text-align: center;
   margin: auto;
@@ -26,6 +35,9 @@ p{
 h3 {
   color: #FF7307;
   text-align: left;
+}
+html {
+    scroll-behavior: smooth;
 }
 .horizontal-scrollable  {
   overflow: scroll;
@@ -55,6 +67,10 @@ h3 {
   .App-logo {
     animation: App-logo-spin infinite 5s linear;
   }
+  .App-logo2 {
+    animation: App-logo-spin infinite 1s linear;
+  }
+
 }
 
 .App-header {

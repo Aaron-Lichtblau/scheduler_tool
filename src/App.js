@@ -16,18 +16,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.resSection = React.createRef();
 
     this.state = {
       schedule: null,
       stats: {"to be displayed": "stat data"},
       df: [["headers"],{"index": ["row"]}],
-      hideResults: true
+      hideResults: true,
+      hideSpinner: true,
+      hideInfeasible: true,
     };
   }
 
+  scrollTo(ref){
+    ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   handleSubmit(){
     var self = this;
+    self.setState({hideSpinner: false});
     axios.get('/results').then(
     (resp) => {
         console.log(resp.data);
@@ -36,8 +43,17 @@ class App extends React.Component {
           stats: result['stats'],
           schedule: JSON.stringify(result['schedule']),
           df: result['df'],
-          hideResults: false
+          hideSpinner: true
         });
+        if (result['stats']['avg hap'] > 100){
+          console.log('infeasible');
+          self.setState({hideInfeasible: false, hideResults:true})
+        }
+        else{
+          self.setState({hideResults:false, hideInfeasible:true})
+        }
+
+        this.scrollTo(self.resSection);
       }
     ,
     (error) => {
@@ -92,10 +108,11 @@ class App extends React.Component {
 
           <h3>Step 1: Upload time data
           </h3>
-          <p>Download your spreadsheet of labTA's time preferences as a .csv file. Then, upload your file by clicking "choosse file". Make sure that your file is formatted correctly.
+          <p>Download your spreadsheet of labTA's time preferences as a .csv file. Then,
+          upload your file by clicking "choose file". Make sure that your file is formatted correctly.
           To see an example file, refer to ** link to github default_input.csv **.
 
-          Then input the duration of a time slots (default is 2 hours).
+          Then input the duration of time slots (default is 2 hours).
 
           Lastly, input the desired number of TA's working in each slot.
           </p>
@@ -134,7 +151,8 @@ class App extends React.Component {
           <h3>Step 3: Select Advanced Settings (Optional)
           </h3>
           <p>Fill in the questions to set the advanced settings for the scheduler tool to use.
-          The outputted schedule will be based on these preferences.
+          The outputted schedule will be based on these preferences. This is a good place to
+          adjust constraints on the scheduler.
           </p>
 
           </Col>
@@ -142,37 +160,51 @@ class App extends React.Component {
             <AdvancedForm/>
           </Col>
         </Row>
-        <Row>
-          <Col sm={5}>
-
-            <Button variant="primary" onClick={this.handleSubmit} size="lg"> Create a Schedule!</Button>
-
-          </Col>
-          <Col sm={7}>
-          </Col>
-        </Row>
         <br></br>
         <hr style={hrStyle}></hr>
         <br></br>
-        <div className="Results" hidden={this.state.hideResults}>
-          <Row>
+        <Row>
+          <Col>
+          </Col>
+          <Col>
+            <Button  variant="primary" onClick={this.handleSubmit} size="lg">
+            <img
+              alt=""
+              src={logo}
+              width="30"
+              height="30"
+              className="App-logo2"
+              hidden={this.state.hideSpinner}
+            />{' '}
+            Create a Schedule!</Button>
+            </Col>
+            <Col>
+            </Col>
+        </Row>
+        <br></br>
+        <br></br>
 
+        <div className="Infeasible" hidden={this.state.hideInfeasible}>
+        <p> Something over-constrained the scheduler, please adjust settings </p>
+        </div>
+        <div className="Results" hidden={this.state.hideResults} ref={this.resSection}>
+          <Row>
             <h3> Your Schedule </h3>
             <div class= "container horizontal-scrollable">
             <DataFrame df={this.state.df}/>
             </div>
 
           </Row>
-
+          <br></br>
           <Row>
           <h3> Schedule Stats </h3>
           <Stats
           stats={this.state.stats}
           />
           </Row>
-
+          <br></br>
           <Row>
-          <h3> Print Schedule </h3>
+          <h3> Print Out of Schedule </h3>
           <p> {this.state.schedule}</p>
           </Row>
         </div>

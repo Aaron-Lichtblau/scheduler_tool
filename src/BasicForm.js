@@ -153,71 +153,71 @@ class BasicForm extends React.Component {
       </Modal.Header>
       <Modal.Body>
         <Row>
-          <Col xs={12} md={8}>
-            <p>
+          <Col xs={12} md={7}>
+            <p className="modalQues">
             It is essential that students who listed more availabilities get
             preference over students who listed fewer availabilities.
             </p>
           </Col>
-          <Col xs={6} md={4}>
+          <Col xs={6} md={5}>
             {this.renderQuestion('avail', this.state['avail'])}
           </Col>
         </Row>
 
         <Row>
-          <Col xs={12} md={8}>
-            <p>
+          <Col xs={12} md={7}>
+            <p className="modalQues">
             It is essential that students get their desired slot type (2hr vs 4hr).
             </p>
           </Col>
-          <Col xs={6} md={4}>
+          <Col xs={6} md={5}>
             {this.renderQuestion('slot_type', this.state['slot_type'])}
           </Col>
         </Row>
 
         <Row>
-          <Col xs={12} md={8}>
-            <p>
+          <Col xs={12} md={7}>
+            <p className="modalQues">
             It is essential that no student gets placed in a slot that they reported as a 1
             (can work at this time if I am absolutely needed to).
             </p>
           </Col>
-          <Col xs={6} md={4}>
+          <Col xs={6} md={5}>
             {this.renderQuestion('no_1', this.state['no_1'])}
           </Col>
         </Row>
 
         <Row>
-          <Col xs={12} md={8}>
-            <p>
+          <Col xs={12} md={7}>
+            <p className="modalQues">
             It is essential that every student is guaranteed to get at least 1 shift.
             </p>
           </Col>
-          <Col xs={6} md={4}>
+          <Col xs={6} md={5}>
             {this.renderQuestion('guarantee_shift', this.state['guarantee_shift'])}
           </Col>
         </Row>
 
         <Row>
-          <Col xs={12} md={8}>
-            <p>
+          <Col xs={12} md={7}>
+            <p className="modalQues">
             Students who have higher caps on the number of shifts they want to work
             should be prioritized.
             </p>
           </Col>
-          <Col xs={6} md={4}>
+          <Col xs={6} md={5}>
             {this.renderQuestion('shift_cap', this.state['shift_cap'])}
           </Col>
         </Row>
 
         <Row>
-          <Col xs={12} md={8}>
-            <p>
+          <Col xs={12} md={7}>
+            <p className="modalQues">
             The number of shifts that each students gets should be distributed as evenly
             as possible.
             </p>
           </Col>
-          <Col xs={6} md={4}>
+          <Col xs={6} md={5}>
             {this.renderQuestion('equality', this.state['equality'])}
           </Col>
         </Row>
