@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import {Table, Container, Row, Col} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
@@ -41,9 +41,9 @@ function TableRow(props) {
 function CreateEntry(val){
   var backColor = null;
   var textColor = 'white';
-  if (val == '-1'){backColor = '#D00000'};
-  if (val == '-2'){backColor = '#FFD000'; textColor = 'black'};
-  if (val == '-3'){backColor = '#00A86B'};
+  if (val === '-1'){backColor = '#D00000'};
+  if (val === '-2'){backColor = '#FFD000'; textColor = 'black'};
+  if (val === '-3'){backColor = '#00A86B'};
   const entry = <td style={{color:textColor, backgroundColor: backColor}}> {val} </td>;
   return entry;
 }
@@ -54,7 +54,7 @@ function CreateEntry(val){
 function DataFrame(props){
   const df = props.df;
   console.log(df);
-  if (df[0][0] != 'Index') {df[0].splice(0,0,'Index');}
+  if (df[0][0] !== 'Index') {df[0].splice(0,0,'Index');}
 
   const cols = df[0];
   console.log(cols);

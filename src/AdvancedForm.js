@@ -1,4 +1,4 @@
-import React, {useState, setState} from 'react';
+import React from 'react';
 import axios from "axios";
 import {Button, Form, Row, Col, Modal, Badge} from 'react-bootstrap';
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";

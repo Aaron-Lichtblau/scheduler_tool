@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import {Button, Form, Accordion, Card, Row, Col} from 'react-bootstrap';
+import {Button, Form, Accordion, Card} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
