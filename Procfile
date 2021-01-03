@@ -1,1 +1,1 @@
-web: node src/index.js
+web: gunicorn api/flask_api:app
