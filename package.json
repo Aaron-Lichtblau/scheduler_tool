@@ -8,11 +8,17 @@
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "flask": "^0.2.10",
+    "matplotlib": "^1.0.0",
+    "numpy": "0.0.1",
+    "pandas": "0.0.3",
+    "pulp": "^15.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
     "react-multiselect-dropdown-bootstrap": "^1.0.16",
     "react-scripts": "4.0.1",
+    "scipy": "^0.1.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -39,6 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": "14.15.3"
   },
   "proxy": "http://localhost:5000"
 }

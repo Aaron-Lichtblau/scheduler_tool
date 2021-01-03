@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-import input_creator
-import helpers
+import api.input_creator
+import api.helpers
 import numpy as np
-import default_run
-import settings
+import api.default_run
+import api.settings
 
 app = Flask(__name__, static_folder='./build', static_url_path='/')
 app.config['JSON_SORT_KEYS'] = False
@@ -114,4 +114,4 @@ def display_results():
     return(jsonify(output_data))
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
+    app.run(host='0.0.0.0', debug=False, port=5000)
