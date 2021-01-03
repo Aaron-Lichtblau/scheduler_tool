@@ -5,8 +5,12 @@ import numpy as np
 import default_run
 import settings
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./build', static_url_path='/')
 app.config['JSON_SORT_KEYS'] = False
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.js')
 
 @app.route('/schedule')
 def get_schedule():
@@ -108,3 +112,6 @@ def display_results():
     print(rows)
     output_data['df'] = [headers, rows]
     return(jsonify(output_data))
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
