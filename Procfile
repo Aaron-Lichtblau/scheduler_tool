@@ -1,1 +1,1 @@
-web: gunicorn flask_api:app
+web: node src/index.js

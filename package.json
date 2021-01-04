@@ -8,7 +8,9 @@
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "express": "^4.17.1",
     "flask": "^0.2.10",
+    "gh-pages": "^3.1.0",
     "matplotlib": "^1.0.0",
     "numpy": "0.0.1",
     "pandas": "0.0.3",
@@ -22,6 +24,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b main -d build",
     "start": "react-scripts start",
     "start-flask-api": "cd api && flask run --no-debugger",
     "build": "react-scripts build",
@@ -50,5 +54,5 @@
     "node": "14.15.3"
   },
   "proxy": "http://localhost:5000",
-  "homepage": "https://Aaron-Lichtblau.github.io/scheduler_tool",
+  "homepage": "https://Aaron-Lichtblau.github.io/scheduler_tool"
 }
