@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory, send_static_file
+from flask import Flask, request, jsonify
 from flask import render_template
 import api.input_creator
 import api.helpers
