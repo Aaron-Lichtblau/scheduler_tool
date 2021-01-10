@@ -111,7 +111,6 @@
     "node": "14.15.3"
   },
   "proxy": "http://localhost:5000",
-  "homepage": "https://Aaron-Lichtblau.github.io/scheduler_tool",
   "jest": {
     "roots": [
       "<rootDir>/src"
