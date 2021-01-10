@@ -5,13 +5,13 @@ import numpy as np
 import api.default_run
 import api.settings
 
-app = Flask(__name__, static_folder='./build', static_url_path='/')
+app = Flask(__name__, static_folder='./build', static_url_path='/src')
 app.config['JSON_SORT_KEYS'] = False
 
 @app.route('/')
 def index():
-    return "<h1>Welcome Lab Scheduler</h1>"
-    # return app.send_static_file('index.js')
+    # return "<h1>Welcome Lab Scheduler</h1>"
+    return app.send_static_file('index.js')
 
 @app.route('/schedule')
 def get_schedule():
