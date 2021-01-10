@@ -1,17 +1,18 @@
-from flask import send_from_directory, Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
+from flask import render_template
 import api.input_creator
 import api.helpers
 import numpy as np
 import api.default_run
 import api.settings
 
-app = Flask(__name__, static_folder='./build')
+app = Flask(__name__, static_folder='./build',static_url_path='')
 app.config['JSON_SORT_KEYS'] = False
 
 @app.route('/')
 def index():
     # return "<h1>Welcome Lab Scheduler</h1>"
-    return app.send_from_directory('src','index.js')
+    return send_from_directory(app.static_folder, 'index.html')
     # return app.send_static_file('index.js')
 
 @app.route('/schedule')
