@@ -116,6 +116,5 @@ def display_results():
     return(jsonify(output_data))
 
 if __name__ == '__main__':
-    if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
     # host='0.0.0.0', port=5000, debug=False
