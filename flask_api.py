@@ -10,7 +10,8 @@ app.config['JSON_SORT_KEYS'] = False
 
 @app.route('/')
 def index():
-    return app.send_static_file('index.js')
+    return "<h1>Welcome Lab Scheduler</h1>"
+    # return app.send_static_file('index.js')
 
 @app.route('/schedule')
 def get_schedule():
@@ -114,4 +115,5 @@ def display_results():
     return(jsonify(output_data))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run()
+    # host='0.0.0.0', port=5000, debug=False
