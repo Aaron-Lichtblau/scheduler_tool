@@ -2,7 +2,7 @@ import math
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
-import api.constants
+import api.constants as constants
 
 def exp_stats(exp_dict, schedule):
     """prints stats on experience per slot"""

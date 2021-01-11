@@ -1,7 +1,7 @@
 import csv
 import pandas as pd
-import api.helpers
-import api.constants
+import api.helpers as helpers
+import api.constants as constants
 
 #-------------------------------------------------------------------------------
 # Creation of settings.yaml
@@ -64,7 +64,7 @@ def get_df(csv_file):
 
     if csv_file is None:
         csv_file = 'default_input.csv'
-    print(csv_file)
+    print("hi there csv: ", csv_file)
     df = pd.read_csv(csv_file) #df should have cols: name, slots, slot_type, cap
     row_nums = len(df['name'])
     students = list(df['name'])

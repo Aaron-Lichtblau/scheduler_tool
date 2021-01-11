@@ -1,10 +1,11 @@
-from flask import Flask, request, jsonify
-from flask import render_template
+from flask import Flask, request, jsonify, session
+from werkzeug.utils import secure_filename
 import api.input_creator as input_creator
 import api.helpers as helpers
 import numpy as np
 import api.default_run as default_run
 import api.settings as settings
+import os
 
 app = Flask(__name__, static_folder='./build',static_url_path='/')
 app.config['JSON_SORT_KEYS'] = False
@@ -19,13 +20,10 @@ def get_schedule():
 
 @app.route('/file', methods=['GET','POST'])
 def get_slotDict():
-    data = request.get_json()
-    # for now using path of csv file --> will be:
-    df = input_creator.get_df(data['file'])
-    settings.file = data['file']
-    print(settings.file)
-    df = input_creator.get_df(settings.file)
-
+    file = request.files['file']
+    df = input_creator.get_df(file)
+    settings.file = file.name
+    # print(settings.file)
     settings.df = df
     settings.slotdict = {x: 1 for x in helpers.get_slots(df)}
     return jsonify({'slotdict': settings.slotdict})
@@ -38,7 +36,7 @@ def send_df():
 def get_Userslots():
     data = request.get_json()
     slotdict = data['slotdict']
-    print(slotdict)
+    # print(slotdict)
     for slot in slotdict:
         if slotdict[slot] == None:
             slotdict[slot] = 1
@@ -96,21 +94,21 @@ def display_results():
     flex_shifts = settings.flex_shifts
 
     default_input = [file, df, slotdict, duration]
-    print(default_input)
+    # print(default_input)
     advanced_input = [weightdict, min_exp, min_skill, stress_slots, target_delta, flex_shifts]
-    print(advanced_input)
+    # print(advanced_input)
     cleaned_input = input_creator.process_input(default_input, advanced_input)
     output_data = default_run.run(cleaned_input)
 
     # // props.df: [headers, rows]
     #   // headers: [col headers]
     #   // rows: {index: list(values)}
-    print(output_data['df'])
+    # print(output_data['df'])
     outdf = output_data['df'].astype(dtype=str)
     headers = list(outdf.columns)
     rows = {str(i): list(outdf.iloc[i]) for i in outdf.index}
-    print(headers)
-    print(rows)
+    # print(headers)
+    # print(rows)
     output_data['df'] = [headers, rows]
     return(jsonify(output_data))
 

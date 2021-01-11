@@ -1,9 +1,9 @@
 from api.schedule import Schedule
-import api.input_creator
+import api.input_creator as input_creator
 # import output_creator
-import api.stats
-import api.graph
-import api.solver
+import api.stats as stats
+import api.graph as graph
+import api.solver as solver
 
 
 # a full run of the default program

@@ -1,5 +1,5 @@
 from api.schedule import Schedule
-import api.constants
+import api.constants as constants
 #-------------------------------------------------------------------------------
 # Node Manipulation Helper Functions
 # Parameter formats:

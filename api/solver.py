@@ -1,9 +1,9 @@
 from pulp import *
 from api.schedule import Schedule
-import api.input_creator
-import api.graph
-import api.helpers
-import api.constants
+import api.input_creator as input_creator
+import api.graph as graph
+import api.helpers as helpers
+import api.constants as constants
 
 #-------------------------------------------------------------------------------
 # Linear Program Solver Functions

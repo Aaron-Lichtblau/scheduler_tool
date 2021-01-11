@@ -95,12 +95,13 @@ class FileForm extends React.Component {
     event.preventDefault();
   }
 
-  fetchData(path){
-
+  fetchData(file){
     var self = this;
-    var data = {file: path};
+    const formData = new FormData();
 
-    axios.post('/file', data)
+    formData.append("file", file);
+
+    axios.post('/file', formData)
     .then(res => { // then print response status
         console.warn(res);
         axios.get('/file/df').then(
