@@ -110,7 +110,13 @@ class App extends React.Component {
           </h3>
           <p>Download your spreadsheet of labTA's time preferences as a .csv file. Then,
           upload your file by clicking "choose file". Make sure that your file is formatted correctly.
-          To see an example file, refer to ** link to github default_input.csv **.
+          To see an example file, refer to:
+          <a href= "https://github.com/Aaron-Lichtblau/scheduler_tool/blob/main/api/default_input.csv"
+          target="_blank"
+          rel="noreferrer">
+           example csv
+          </a>
+          .
 
           Then input the duration of time slots (default is 2 hours).
 

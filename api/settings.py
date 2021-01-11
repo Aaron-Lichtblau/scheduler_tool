@@ -6,7 +6,7 @@ slotdict= None
 weightdict= {'slot_type' : 8, 'no_1' : 6, 'guarantee_shift' : 7, 'avail' : 6, 'shift_cap' : 5, 'equality' : 3}
 df = None
 # file to be None
-file = "/Users/aaronlichtblau/Desktop/Projects/lab-scheduler/api/default_input.csv"
+file = None
 duration=120
 
 
