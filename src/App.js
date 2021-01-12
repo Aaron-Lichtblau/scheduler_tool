@@ -195,7 +195,7 @@ class App extends React.Component {
         </div>
         <div className="Results" hidden={this.state.hideResults} ref={this.resSection}>
           <Row>
-            <h3> Your Schedule </h3>
+            <h3> Your Schedule (slide right to view fully)</h3>
             <div class= "container horizontal-scrollable">
             <DataFrame df={this.state.df}/>
             </div>
@@ -204,6 +204,7 @@ class App extends React.Component {
           <br></br>
           <Row>
           <h3> Schedule Stats </h3>
+          <br></br>
           <Stats
           stats={this.state.stats}
           />
