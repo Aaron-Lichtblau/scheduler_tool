@@ -204,7 +204,9 @@ class App extends React.Component {
           <br></br>
           <Row>
           <h3> Schedule Stats </h3>
+          </Row>
           <br></br>
+          <Row>
           <Stats
           stats={this.state.stats}
           />
