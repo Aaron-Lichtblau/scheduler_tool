@@ -6,7 +6,7 @@ import {DataFrame, Stats} from './Results.js';
 import {BasicForm} from './BasicForm.js';
 import {AdvancedForm} from './AdvancedForm.js';
 import React from 'react';
-import {Button, Nav, Navbar, Container, Row, Col, Form} from 'react-bootstrap';
+import {Button, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
@@ -70,31 +70,9 @@ class App extends React.Component {
     console.log(this.state.df);
   return (
     <div className="App">
-    {/* a bunch of navbar bs that looks cool*/}
-      <Navbar bg="dark" variant="dark" expand="lg">
-      <Navbar.Brand href="#home">
-        <img
-          alt=""
-          src={logo}
-          width="30"
-          height="30"
-          className="App-logo"
-        />{' '}
-        Lab Scheduler
-      </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="navbar">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
-          </Nav>
-          <Form inline className="welcomeText">
-          </Form>
-        </Navbar.Collapse>
-      </Navbar>
-      <br></br>
-      <br></br>
 
+      <br></br>
+      <br></br>
 
       <Container>
         <Row>
