@@ -88,7 +88,7 @@ class App extends React.Component {
           </h3>
           <p>Download your spreadsheet of labTA's time preferences as a .csv file. Then,
           upload your file by clicking "choose file". Make sure that your file is formatted correctly.
-          To see an example file, refer to:
+          To see an example file, refer to: &nbsp;
           <a href= "https://github.com/Aaron-Lichtblau/scheduler_tool/blob/main/api/default_input.csv"
           target="_blank"
           rel="noreferrer">
@@ -195,6 +195,38 @@ class App extends React.Component {
           <p> {this.state.schedule}</p>
           </Row>
         </div>
+
+        <br></br>
+        <hr style={hrStyle}></hr>
+        <br></br>
+
+        <div className="footer">
+        <p>Created by &nbsp;
+        <a href= "https://github.com/Aaron-Lichtblau"
+           target="_blank"
+           rel="noreferrer">
+          Aaron Lichtblau
+        </a>
+         &nbsp; under the mentorship of &nbsp;
+
+         <a href= "https://www.cs.princeton.edu/people/profile/lumbroso"
+            target="_blank"
+            rel="noreferrer">
+         Professor Jeremie Lumbroso
+         </a>
+         &nbsp; and &nbsp;
+         <a href="https://www.cs.princeton.edu/people/profile/smattw"
+            target="_blank"
+            rel="noreferrer">
+         Professor Matt Weinberg
+         </a>
+         .
+        </p>
+        </div>
+
+        <br></br>
+        <br></br>
+
       </Container>
 
 

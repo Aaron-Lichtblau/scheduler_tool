@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -16,12 +15,11 @@ ReactDOM.render(
     <div className="App">
       <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand as={Link} to="/">
-        <img
-          alt=""
-          src={logo}
+        <img src={require("./pics/princeton.png").default}
+          alt="Princeton"
           width="30"
           height="30"
-          className="App-logo"
+          className="Tiger-logo"
         />{' '}
         Lab Scheduler
       </Navbar.Brand>
