@@ -7,6 +7,12 @@ function About(props){
   var aaronPic = require('./pics/Aaron.png');
   var mattPic = require('./pics/Matt.png');
   var jeremiePic = require('./pics/Jeremie.png');
+  const picStyle = {
+    float:'center',
+    width:'250px',
+    height:'350px',
+    margin: 'auto',
+  }
   return(
     <div className="App">
 
@@ -26,9 +32,9 @@ function About(props){
       <Row>
         <Col sm>
           <Card style={{ width: '20rem' }}>
-          <div className="picBox">
-            <Card.Img variant="top" src={aaronPic.default} className="pics"/>
-            </div>
+
+            <Card.Img variant="top" src={aaronPic.default} style={picStyle}/>
+
             <Card.Body>
               <Card.Title><h2>Aaron Lichtblau</h2></Card.Title>
               <Card.Text>
@@ -39,9 +45,9 @@ function About(props){
         </Col>
       <Col sm>
         <Card style={{ width: '20rem' }}>
-          <div className="picBox">
-          <Card.Img variant="top" src={mattPic.default} className="pics"/>
-          </div>
+
+          <Card.Img variant="top" src={mattPic.default} style={picStyle}/>
+
           <Card.Body>
             <Card.Title><h2>Matt Weinberg</h2></Card.Title>
             <Card.Text>
@@ -52,9 +58,9 @@ function About(props){
       </Col>
       <Col sm>
         <Card style={{ width: '20rem' }}>
-        <div className="picBox">
+
           <Card.Img variant="top" src={jeremiePic.default}/>
-          </div>
+
           <Card.Body>
             <Card.Title><h2>Jeremie Lumbroso</h2></Card.Title>
             <Card.Text>

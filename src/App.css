@@ -102,13 +102,20 @@ html {
     transform: rotate(360deg);
   }
 }
-.pic{
+.pics{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   float:center;
-  width:250px;
-  height:350px;
+  width:350px;
+  height:500px;
   margin: auto;
 }
-
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .bio {
   color: #FF7307;
   text-align: center;
