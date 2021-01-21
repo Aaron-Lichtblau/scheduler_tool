@@ -26,7 +26,9 @@ function About(props){
       <Row>
         <Col sm>
           <Card style={{ width: '20rem' }}>
+          <div className="picBox">
             <Card.Img variant="top" src={aaronPic.default} className="pics"/>
+            </div>
             <Card.Body>
               <Card.Title><h2>Aaron Lichtblau</h2></Card.Title>
               <Card.Text>
@@ -37,7 +39,9 @@ function About(props){
         </Col>
       <Col sm>
         <Card style={{ width: '20rem' }}>
+          <div className="picBox">
           <Card.Img variant="top" src={mattPic.default} className="pics"/>
+          </div>
           <Card.Body>
             <Card.Title><h2>Matt Weinberg</h2></Card.Title>
             <Card.Text>
@@ -48,7 +52,9 @@ function About(props){
       </Col>
       <Col sm>
         <Card style={{ width: '20rem' }}>
-          <Card.Img variant="top" src={jeremiePic.default} className="pics"/>
+        <div className="picBox">
+          <Card.Img variant="top" src={jeremiePic.default}/>
+          </div>
           <Card.Body>
             <Card.Title><h2>Jeremie Lumbroso</h2></Card.Title>
             <Card.Text>
