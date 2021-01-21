@@ -19,7 +19,7 @@ ReactDOM.render(
           alt="Princeton"
           width="30"
           height="30"
-          className="Tiger-logo"
+          className="d-inline-block align-top"
         />{' '}
         Lab Scheduler
       </Navbar.Brand>

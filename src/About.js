@@ -63,7 +63,7 @@ function About(props){
           <Card.Img variant="top" src={jeremiePic.default}/>
 
           <Card.Body>
-            <Card.Title><h2>Jeremie Lumbroso</h2></Card.Title>
+            <Card.Title><h2>Jérémie Lumbroso</h2></Card.Title>
             <Card.Text>
               <h3 className="bio"> Sage of Software </h3>
             </Card.Text>
@@ -74,8 +74,6 @@ function About(props){
     </Container>
 
 
-    <br></br>
-    <br></br>
     <br></br>
     <br></br>
     <br></br>

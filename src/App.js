@@ -211,7 +211,7 @@ class App extends React.Component {
          <a href= "https://www.cs.princeton.edu/people/profile/lumbroso"
             target="_blank"
             rel="noreferrer">
-         Professor Jeremie Lumbroso
+         Professor Jérémie Lumbroso
          </a>
          &nbsp; and &nbsp;
          <a href="https://www.cs.princeton.edu/people/profile/smattw"
