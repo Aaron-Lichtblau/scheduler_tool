@@ -9,9 +9,10 @@ function About(props){
   var jeremiePic = require('./pics/Jeremie.png');
   const picStyle = {
     float:'center',
-    width:'250px',
-    height:'350px',
+    width:'210px',
+    height:'300px',
     margin: 'auto',
+    padding: '3px'
   }
   return(
     <div className="App">

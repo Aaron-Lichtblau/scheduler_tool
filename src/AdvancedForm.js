@@ -117,8 +117,8 @@ class AdvancedForm extends React.Component {
       experienced and skilled TA's that you want to be guaranteed in each of these 'stress slots'.</p>
       <Row>
         <Col xs={12} md={8}>
-          <p className="modalQues">
-          STRESS_SLOTS: slots which need especially strong TA's in them.
+          <p className="modalQuesAdv">
+          STRESS SLOTS: slots which need especially strong TA's in them.
           </p>
         </Col>
         <Col xs={6} md={4}>
@@ -131,7 +131,7 @@ class AdvancedForm extends React.Component {
 
       <Row>
         <Col xs={12} md={8}>
-          <p className="modalQues">
+          <p className="modalQuesAdv">
           MIN EXP: minimum number of 'experienced' TA's in each stress slot.
           </p>
         </Col>
@@ -142,7 +142,7 @@ class AdvancedForm extends React.Component {
 
       <Row>
         <Col xs={12} md={8}>
-          <p className="modalQues">
+          <p className="modalQuesAdv">
           MIN SKILL: minimum number of 'skilled' TA's in each stress slot.
           </p>
         </Col>
@@ -157,7 +157,7 @@ class AdvancedForm extends React.Component {
       parameters below, you relax the constraints to give the scheduler a better ability to perform optimally.</p>
       <Row>
         <Col xs={12} md={8}>
-          <p className="modalQues">
+          <p className="modalQuesAdv">
           TARGET DELTA: this is the acceptable number of TA's above your inputted slot sizes that the scheduler can assign.
           For example, if: FR_1900 = 5 TA's and target delta = 2, the scheduler could assign up to 7 TA's in Fr_1900.
           </p>
@@ -169,8 +169,8 @@ class AdvancedForm extends React.Component {
 
       <Row>
         <Col xs={12} md={8}>
-          <p className="modalQues">
-          FLEX_SHIFTS: this is the number of floating shifts which the scheduler can assign in any slot.
+          <p className="modalQuesAdv">
+          FLEX SHIFTS: this is the number of floating shifts which the scheduler can assign in any slot.
           For example, if: flex shifts = 3, 3 extra shifts will be assigned throughout the schedule
           (within the target delta).
           </p>

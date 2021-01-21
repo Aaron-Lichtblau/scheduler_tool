@@ -29,6 +29,14 @@
 .modalQues{
   color: black;
 }
+.modalQuesAdv{
+  color: black;
+  font-size: 85%;
+}
+.modalKey{
+  color: black;
+  font-size: 80%;
+}
 .inputFile{
   text-align: center;
   margin: auto;

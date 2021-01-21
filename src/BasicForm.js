@@ -152,6 +152,15 @@ class BasicForm extends React.Component {
         <Modal.Title>Basic Settings (defaults were settings used in 2019)</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+      <Row>
+        <Col xs={12} md={7}>
+          <p className="modalQues">
+          </p>
+        </Col>
+        <Col xs={6} md={5}>
+          <p className="modalKey"> 1 = not important &nbsp;&nbsp;&nbsp; 6 = most important</p>
+        </Col>
+      </Row>
         <Row>
           <Col xs={12} md={7}>
             <p className="modalQues">

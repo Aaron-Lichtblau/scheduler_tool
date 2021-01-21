@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
 import {FileForm} from './FileLoad.js';
@@ -118,7 +117,7 @@ class App extends React.Component {
           The outputted schedule will be based on these preferences. Keep in mind that these preferences
           are competing. Scores of 4 and above will be treated as strict preferences: adhered to in
           all situations, unless there is a competing higher scored preference. Scores of 3 and below will
-          be treated as soft preferences: adhered to as bonuses.
+          be treated as soft preferences: adhered to as bonuses. Scores do not have to be unique.
           </p>
 
           </Col>
@@ -154,7 +153,7 @@ class App extends React.Component {
             <Button  variant="primary" onClick={this.handleSubmit} size="lg">
             <img
               alt=""
-              src={logo}
+              src={require("./pics/princeton.png").default}
               width="30"
               height="30"
               className="App-logo2"
